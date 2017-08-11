@@ -3,7 +3,7 @@ $(function() {
 
     QUnit.module('data', {
         afterEach: function() {
-            $b.queryBuilder('destroy');
+            //$b.queryBuilder('destroy');
         }
     });
 
