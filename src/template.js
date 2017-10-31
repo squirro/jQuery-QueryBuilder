@@ -222,6 +222,16 @@ QueryBuilder.prototype.getRuleInput = function(rule, value_id) {
         h = filter.input.call(this, rule, name);
     }
     else {
+        var placeholder = filter.placeholder;
+        var placeholder_value = filter.placeholder_value;
+
+        if (placeholder instanceof Array) {
+            placeholder = placeholder[value_id];
+        }
+        if (placeholder_value instanceof Array) {
+            placeholder_value = placeholder_value[value_id];
+        }
+
         switch (filter.input) {
             case 'radio':
             case 'checkbox':
@@ -232,8 +242,8 @@ QueryBuilder.prototype.getRuleInput = function(rule, value_id) {
 
             case 'select':
                 h += '<select class="form-control" name="' + name + '"' + (filter.multiple ? ' multiple' : '') + '>';
-                if (filter.placeholder) {
-                    h += '<option value="' + filter.placeholder_value + '" disabled selected>' + filter.placeholder + '</option>';
+                if (placeholder) {
+                    h += '<option value="' + placeholder_value + '" disabled selected>' + placeholder + '</option>';
                 }
                 Utils.iterateOptions(filter.values, function(key, val) {
                     h += '<option value="' + key + '">' + val + '</option> ';
@@ -247,7 +257,7 @@ QueryBuilder.prototype.getRuleInput = function(rule, value_id) {
                 if (filter.rows) h += ' rows="' + filter.rows + '"';
                 if (validation.min !== undefined) h += ' minlength="' + validation.min + '"';
                 if (validation.max !== undefined) h += ' maxlength="' + validation.max + '"';
-                if (filter.placeholder) h += ' placeholder="' + filter.placeholder + '"';
+                if (placeholder) h += ' placeholder="' + placeholder + '"';
                 h += '></textarea>';
                 break;
 
@@ -256,14 +266,14 @@ QueryBuilder.prototype.getRuleInput = function(rule, value_id) {
                 if (validation.step !== undefined) h += ' step="' + validation.step + '"';
                 if (validation.min !== undefined) h += ' min="' + validation.min + '"';
                 if (validation.max !== undefined) h += ' max="' + validation.max + '"';
-                if (filter.placeholder) h += ' placeholder="' + filter.placeholder + '"';
+                if (placeholder) h += ' placeholder="' + placeholder + '"';
                 if (filter.size) h += ' size="' + filter.size + '"';
                 h += '>';
                 break;
 
             default:
                 h += '<input class="form-control" type="text" name="' + name + '"';
-                if (filter.placeholder) h += ' placeholder="' + filter.placeholder + '"';
+                if (placeholder) h += ' placeholder="' + placeholder + '"';
                 if (filter.type === 'string' && validation.min !== undefined) h += ' minlength="' + validation.min + '"';
                 if (filter.type === 'string' && validation.max !== undefined) h += ' maxlength="' + validation.max + '"';
                 if (filter.size) h += ' size="' + filter.size + '"';
