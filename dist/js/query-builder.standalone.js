@@ -2575,16 +2575,16 @@ QueryBuilder.templates.group = '\
   <dt class="rules-group-header"> \
     <div class="btn-group pull-right group-actions"> \
       <button type="button" class="btn btn-xs btn-success" data-add="rule"> \
-        <i class="{{= it.icons.add_rule }}"></i> {{= it.translate("add_rule") }} \
+        <i class="material-icons">add_circle_outline</i> {{= it.translate("add_rule") }} \
       </button> \
       {{? it.settings.allow_groups===-1 || it.settings.allow_groups>=it.level }} \
         <button type="button" class="btn btn-xs btn-success" data-add="group"> \
-          <i class="{{= it.icons.add_group }}"></i> {{= it.translate("add_group") }} \
+          <i class="material-icons">add_circle_outline</i> {{= it.translate("add_group") }} \
         </button> \
       {{?}} \
       {{? it.level>1 }} \
         <button type="button" class="btn btn-xs btn-danger" data-delete="group"> \
-          <i class="{{= it.icons.remove_group }}"></i> {{= it.translate("delete_group") }} \
+          <i class="material-icons">delete</i> {{= it.translate("delete_group") }} \
         </button> \
       {{?}} \
     </div> \
@@ -2596,7 +2596,7 @@ QueryBuilder.templates.group = '\
       {{~}} \
     </div> \
     {{? it.settings.display_errors }} \
-      <div class="error-container"><i class="{{= it.icons.error }}"></i></div> \
+      <div class="error-container"><i class="material-icons">error_outline</i></div> \
     {{?}} \
   </dt> \
   <dd class=rules-group-body> \
@@ -2609,12 +2609,12 @@ QueryBuilder.templates.rule = '\
   <div class="rule-header"> \
     <div class="btn-group pull-right rule-actions"> \
       <button type="button" class="btn btn-xs btn-danger" data-delete="rule"> \
-        <i class="{{= it.icons.remove_rule }}"></i> {{= it.translate("delete_rule") }} \
+        <i class="material-icons">delete</i> {{= it.translate("delete_rule") }} \
       </button> \
     </div> \
   </div> \
   {{? it.settings.display_errors }} \
-    <div class="error-container"><i class="{{= it.icons.error }}"></i></div> \
+    <div class="error-container"><i class="material-icons">error_outline</i></div> \
   {{?}} \
   <div class="rule-filter-container"></div> \
   <div class="rule-operator-container"></div> \
